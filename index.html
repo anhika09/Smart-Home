@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-time">
+            <i class="bi bi-clock"></i>
+            <span id="clock">00:00</span>
+        </div>
+
+        <h1>Smart Home</h1>
+
+        <div class="connection-status">
+            <i class="bi bi-wifi"></i>
+            <span id="connection-status">Connected</span>
+        </div>
+    </header>
+    <aside class="sidebar">
+        <nav class="nav flex-column">
+
+            <a href="#home" class="nav-link active">
+                <i class="bi bi-house"></i>
+                Home
+            </a>
+
+            <a href="#lights" class="nav-link">
+                <i class="bi bi-lightbulb"></i>
+                Lights
+            </a>
+
+            <a href="#climate" class="nav-link">
+                <i class="bi bi-thermometer"></i>
+                Climate
+            </a>
+
+            <a href="#security" class="nav-link">
+                <i class="bi bi-shield-lock"></i>
+                Security
+            </a>
+
+            <a href="#settings" class="nav-link">
+                <i class="bi bi-gear"></i>
+                Settings
+            </a>
+
+        </nav>
+    </aside>
+    <main>
+
+        <section id="home">
+            <div class="row">
+
+                <div class="col-md-6 mb-4">
+                    <dutton class="card room-card">
+                        <img src="C:\Users\HP\Desktop\full.stack\Smart Home\img\livingroom.jpg" class="card-img-top"
+                            alt="Living Room">
+
+                        <div class="card-body">
+                            <h2 class="card-title">Living Room</h2>
+                            <p class="card-text">4 devices</p>
+                        </div>
+                    </dutton>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <dutton class="card room-card">
+                        <img src="C:\Users\HP\Desktop\full.stack\Smart Home\img\bedroom.jpg" class="card-img-top"
+                            alt="Bedroom">
+
+                        <div class="card-body">
+                            <h2 class="card-title">Bedroom</h2>
+                            <p class="card-text">4 devices</p>
+                        </div>
+                    </dutton>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <dutton class="card room-card">
+                        <img src="C:\Users\HP\Desktop\full.stack\Smart Home\img\kitchen.jpg" class="card-img-top"
+                            alt="Kitchen">
+
+                        <div class="card-body">
+                            <h2 class="card-title">Kitchen</h2>
+                            <p class="card-text">5 devices</p>
+                        </div>
+                    </dutton>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <dutton class="card room-card">
+                        <img src="C:\Users\HP\Desktop\full.stack\Smart Home\img\bathroom.jpg" class="card-img-top"
+                            alt="Bathroom">
+
+                        <div class="card-body">
+                            <h2 class="card-title">Bathroom</h2>
+                            <p class="card-text">3 devices</p>
+                        </div>
+                    </dutton>
+                </div>
+
+            </div>
+        </section>
+
+
+        <div class="global-control">
+            <section id="lights">
+                <div class="card">
+                    <div class="card-body">
+                        <h1><i class="bi bi-lightbulb"></i> Lights</h1>
+                        <p>Control your smart lights here.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="climate">
+                <div class="card">
+                    <div class="card-body">
+                        <h1><i class="bi bi-thermometer"></i> Climate</h1>
+                        <p>Control your smart climate controls here.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="security">
+                <div class="card">
+                    <div class="card-body">
+                        <h1><i class="bi bi-shield-lock"></i> Security</h1>
+                        <p>Control your smart security systems here.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="settings">
+                <div class="card">
+                    <div class="card-body">
+                        <h1> <i class="bi bi-gear"></i> Settings</h1>
+                        <p>Manage your smart home settings here.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <section class="modes">
+            <h1>Modes</h1>
+            <div id="modes-cards">
+                <button id="away-mode">
+                    <i class="bi bi-person-walking"></i>
+                    <p>Away Mode</p>
+                </button>
+                <button id="night-mode">
+                    <i class="bi bi-moon-fill"></i>
+                    <p>Night Mode</p>
+                </button>
+                <button id="create-mode">
+                    <i class="bi bi-bookmark-plus-fill"></i>
+                    <p>Create Mode</p>
+                </button>
+            </div>
+        </section>
+
+    </main>
+    <script src="script.js"></script>
+</body>
+<footer>
+    <p>&copy; 2026 Smart Home. All rights resrerved. </p>
+    <p>Have some problems? Contact us at <a href="mailto:support@smarthome.com">support@smarthome.com</a></p>
+</footer>
+
+</html>
