@@ -32,7 +32,7 @@ Smart Home/
 - Live weather (Lviv), clock, online/offline indicator
 
 ## Class Hierarchy
-
+```mermaid
 classDiagram
     Device <|-- Light
     Light <|-- Lamp
@@ -44,6 +44,7 @@ classDiagram
     Device <|-- TV
     Device <|-- Tap
     Device <|-- Gas
+```
 
 `Room` holds devices → `SmartHome` holds rooms + `Mode`s → `Mode.apply()` runs a list of stored actions.
 
