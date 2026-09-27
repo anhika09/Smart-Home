@@ -18,24 +18,20 @@ class Device {
     }
 }
 class Light extends Device {
-    constructor(name) {
-        super(name, "light");
-        this.brightnees = 100;
+    constructor(name, type = "light") { 
+        super(name, type);
+        this.brightness = 100;
         this.color = "warm";
     }
-    setBrightnees(level) {
-        this.brightnees = level;
-        console.log(`Brightnees : ${this.level}`);
+    setBrightness(level) {
+        this.brightness = level;
+        console.log(`Brightness : ${level}`);
     }
     setColor(temp) {
         this.color = temp;
-        console.log(`Color : ${this.temp}`);
+        console.log(`Color : ${temp}`);
     }
 }
-let livingRoomLight = new Light("Living Room Light");
-let bedroomLight = new Light("Bedroom Light");
-let kitchenLight = new Light("Kitchen Light");
-let bathroomLight = new Light("Bathroom Light");
 
 class Blinds extends Device {
     constructor(name) {
@@ -43,29 +39,26 @@ class Blinds extends Device {
         this.position = 0;
         this.angle = 0;
     }
-    SetPosition(persent) {
-        if (persent >= 0 && persent <= 100) {
-            this.position = persent;
-            console.log(`${this.name} open for : ${persent}`);
+    setPosition(percent) {
+        if (percent >= 0 && percent <= 100) {
+            this.position = percent;
+            console.log(`${this.name} open for : ${percent}`);
         } else {
             console.log(`Error: Out of range`)
         }
     }
-    SetAngle(angle) {
+    setAngle(angle) {
         this.angle = angle;
         console.log(`Angle changed to : ${angle}`)
     }
 }
-let livingRoomBlinds = new Blinds("Living Room Blinds");
-let bedroomBlinds = new Blinds("Bedroom Blinds");
-let kitchenBlinds = new Blinds("Kitchen Blinds");
 
 class AirCondition extends Device {
     constructor(name) {
         super(name, "air_condition");
         this.temperature = 22;
     }
-    SetTemperature(temp) {
+    setTemperature(temp) {
         if (temp >= 16 && temp <= 30) {
             this.temperature = temp;
             console.log(`${this.name} : ${temp}°C`)
@@ -74,57 +67,71 @@ class AirCondition extends Device {
         }
     }
 }
-let livingRoomCondition = new AirCondition("Living Room Condition");
 
 class Radiator extends Device {
     constructor(name) {
-        super(name, "hitter");
-        this.HitLevel = 0;
+        super(name, "radiator");
+        this.heatLevel = 0;
     }
-    SetHitLevel(level) {
+    setHeatLevel(level) {
         if (level >= 0 && level <= 5) {
-            this.HitLevel = level;
-            console.log(`${this.name} : has ${level} heating level`);
+            this.heatLevel = level;
+            console.log(`${this.name} : has ${level} heat level`);
         } else {
             console.log("Error: Out of radiator's range");
         }
     }
 }
-let livingRoomClimate = new Radiator("Living Room Heating");
-let bedroomClimate = new Radiator("Bedroom Heating");
-let kitchenClimate = new Radiator("Kitchen Heating");
-let bathroomClimate = new Radiator("Bathroom Heating");
 
 class Lamp extends Light {
-    constructor(namme) {
-        super(name);
-        this.type = "lamp";
+    constructor(name) {
+        super(name, "lamp");
     }
 }
-let bedroomLamp = new Lamp("Bedroom Lamp");
+
 class FrontDoor extends Device {
     constructor(name) {
-        super(name, "front_door", "close");
+        super(name, "front_door");
+        this.status = "locked";
+    }
+    lock() {
+        this.status = "locked";
+        console.log(`${this.name}: is locked`);
+    }
+    
+    unlock() {
+        this.status = "unlocked";
+        console.log(`${this.name}: is unlocked`);
     }
 }
-let frontDoor = new FrontDoor("Front Door");
+
 class DoorBell extends Device {
     constructor(name) {
         super(name, "door_bell");
+        this.isRinging = false;
+    }
+    ring() {
+        this.isRinging = true;
+        console.log(`${this.name}: Camera is turned on...`);
+    }
+    
+    stopRinging() {
+        this.isRinging = false;
+        console.log(`${this.name}: Camera is turned off`);
     }
 }
-let doorBell = new DoorBell("Door Bell");
+
 class TV extends Device {
     constructor(name) {
         super(name, "TV");
         this.currentChannel = 1;
         this.volume = 20;
-        this.chanelList = ["1+1", "ICTV", "Novy Kanal", "Suspilne", "Megogo Sport"];
+        this.channelList = ["1+1", "ICTV", "Novy Kanal", "Suspilne", "Megogo Sport"];
     }
     changeChannel(channelNumber) {
-        if (channelNumber >= 1 && channelNumber <= this.chanelList.length) {
+        if (channelNumber >= 1 && channelNumber <= this.channelList.length) {
             this.currentChannel = channelNumber;
-            console.log(`TV channel : ${this.chanelList[this.currentChannel - 1]}`);
+            console.log(`TV channel : ${this.channelList[this.currentChannel - 1]}`);
         } else {
             console.log("Error: Channel selection error");
         }
@@ -136,6 +143,8 @@ class TV extends Device {
         if (level >= 0 && level <= 100) {
             this.volume = level;
             console.log(`Volume : ${level}`);
+        }else{
+            console.log("Error: Volume level out of range");
         }
     }
     getChannelList() {
@@ -157,21 +166,18 @@ class Tap extends Device {
         console.log(`${this.name}: is turned off`);
     }
 }
-let kitchenTap = new Tap("Kitchen Tap");
-let bathroomTap = new Tap("Bathroom Tap");
 
 class Gas extends Device {
     constructor(name) {
         super(name, "gas");
         this.status = "closed";
     }
-    openValue() {
+    openValve() {
         this.status = "open";
         console.log(`${this.name}: is turned on`);
     }
-    closeValue() {
+    closeValve() {
         this.status = "closed";
         console.log(`${this.name}: is turned off`);
     }
 }
-let mainGasValue = new Gas("Main Gas Value");

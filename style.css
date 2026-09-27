@@ -217,6 +217,35 @@ footer a:hover {
     color: white;
 }
 
+/* ---------------- MODALS ---------------- */
+.modal-content {
+  background-color: #181a1d;
+  color: #f5f5f5;
+  border: 1px solid #2b2d30;
+}
+.modal-header,
+.modal-footer {
+  border-color: #2b2d30;
+}
+.btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+.device-item {
+  border-color: #2b2d30 !important;
+  background-color: #1e2124;
+}
+.form-select,
+.form-control {
+  background-color: #101214;
+  color: #f5f5f5;
+  border-color: #2b2d30;
+}
+.form-select:focus,
+.form-control:focus {
+  background-color: #101214;
+  color: #f5f5f5;
+}
+
 /* ---------------- MOBILE ---------------- */
 
 @media (max-width: 768px) {
