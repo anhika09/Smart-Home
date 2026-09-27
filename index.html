@@ -114,9 +114,12 @@
                             <output for="rangeBright" id="rangeValueBright" aria-hidden="true"></output>
                         </div>
                         <div class="mb-2">
-                            <label for="rangeColor" class="form-label mb-2">Color</label>
-                            <input type="range" class="form-range" min="0" max="100" value="50" id="rangeColor">
-                            <output for="rangeColor" id="rangeValueColor" aria-hidden="true"></output>
+                            <label for="global-light-color" class="form-label mb-2">Color</label>
+                            <select class="form-select" id="global-light-color">
+                                <option value="warm">Warm</option>
+                                <option value="neutral" selected>Neutral</option>
+                                <option value="cool">Cool</option>
+                            </select>
                         </div>
                         <button id="TurnOffbutton" class="btn btn-secondary">Turn off all the lights</button>
                     </div>
@@ -139,9 +142,9 @@
                             </div>
                         </div>
                         <div class="mt-4">
-                            <label for="rangeTemp" class="form-label">Temperature at home</label>
-                            <input type="range" class="form-range" min="18" max="25" value="22" id="rangeTemp">
-                            <output for="rangeTemp" id="rangeValueTemp">22°C</output>
+                            <label for="rangeRadiator" class="form-label">Radiator Heat Level (0/5)</label>
+                            <input type="range" class="form-range" min="0" max="5" value="0" id="rangeRadiator">
+                            <output for="rangeRadiator" id="rangeValueRadiator">Level 0</output>
                         </div>
                     </div>
                 </div>
@@ -171,12 +174,31 @@
 
             <section id="settings" class="mb-4">
                 <div class="card">
-                    <div class="card-body">
-                        <h1> <i class="bi bi-gear"></i> Settings</h1>
-                        <p>Manage your smart home settings here.</p>
+                    <div class="card-body p-4">
+                        <h1 class="card-title mb-4"><i class="bi bi-gear"></i> Settings</h1>
+                        <p class="text-secondary">Manage your smart home settings and check device statuses here.</p>
+                        <button class="btn btn-outline-primary w-100 mt-2" data-bs-toggle="modal"
+                            data-bs-target="#settingsModal">
+                            <i class="bi bi-list-check"></i> View All Devices
+                        </button>
                     </div>
                 </div>
             </section>
+
+            <div class="modal fade" id="settingsModal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"><i class="bi bi-sliders"></i> All Devices Status</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body" id="settingsModalBody">
+                            <!-- list of all devices-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <section class="modes">
             <h1>Modes</h1>

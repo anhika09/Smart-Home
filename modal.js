@@ -203,8 +203,26 @@ function getRoomOfDevice(device) {
 }
 
 const builtInModes = {
-  away: { title: "Away Mode", mode: awayMode, description: "Turns off lights, closes blinds, locks the door, shuts taps and gas." },
-  night: { title: "Night Mode", mode: nightMode, description: "Turns off lights, closes blinds, locks the door, lowers heating." },
+  away: { 
+    title: "Away Mode", 
+    mode: awayMode, 
+    description: [
+      "Turns off lights", 
+      "Closes blinds", 
+      "Locks the door", 
+      "Shuts taps and gas"
+    ] 
+  },
+  night: { 
+    title: "Night Mode", 
+    mode: nightMode, 
+    description: [
+      "Turns off lights", 
+      "Closes blinds", 
+      "Locks the door", 
+      "Lowers heating"
+    ] 
+  },
 };
 
 let modeToApply = null;
@@ -214,8 +232,8 @@ document.getElementById("modeApplyModal").addEventListener("show.bs.modal", (eve
   const modeKey = trigger.getAttribute("data-mode");
   const info = builtInModes[modeKey];
 
-  document.getElementById("modeApplyTitle").textContent = info.title;
-  document.getElementById("modeApplyBody").innerHTML = `<p>${info.description}</p>`;
+  const listItems = info.description.map(item => `<li>${item}</li>`).join("");
+  document.getElementById("modeApplyBody").innerHTML = `<ul>${listItems}</ul>`;
   modeToApply = info.mode;
 });
 
@@ -254,8 +272,8 @@ document.getElementById("saveMode").addEventListener("click", () => {
   const selectedDevices = checked.map((el) => allDevices[Number(el.value)]);
 
   const newMode = new Mode(name, selectedDevices.map((device) => () => device.turnOn()));
+  newMode.description = selectedDevices.map(device => `Turn on ${device.name}`);
   smartHome.modes.push(newMode);
-
   addModeButton(newMode);
 
   document.getElementById("modeName").value = "";
@@ -264,8 +282,33 @@ document.getElementById("saveMode").addEventListener("click", () => {
 
 function addModeButton(mode) {
   const button = document.createElement("button");
-  button.innerHTML = `<i class="bi bi-bookmark-star"></i><p>${mode.name}</p>`;
-  button.addEventListener("click", () => mode.apply());
+  button.className = "position-relative"; 
+  button.innerHTML = `
+    <span class="delete-mode-btn position-absolute top-0 end-0 p-1" style="cursor: pointer;">
+      <i class="bi bi-x-circle text-danger" style="font-size: 0.8rem;"></i>
+    </span>
+    <i class="bi bi-bookmark-star"></i>
+    <p class="mb-0">${mode.name}</p> `;
+
+    button.addEventListener("click", () => {
+    document.getElementById("modeApplyTitle").textContent = mode.name;
+    const listItems = mode.description.map(item => `<li>${item}</li>`).join("");
+    document.getElementById("modeApplyBody").innerHTML = `<ul>${listItems}</ul>`;
+    modeToApply = mode;
+    const applyModal = new bootstrap.Modal(document.getElementById("modeApplyModal"));
+    applyModal.show();
+  });
+  
+  const deleteBtn = button.querySelector(".delete-mode-btn");
+  
+  deleteBtn.addEventListener("click", (event) => {
+    event.stopPropagation(); 
+    
+    if (confirm(`Are you sure you want to delete "${mode.name}"?`)) {
+      smartHome.modes = smartHome.modes.filter(m => m !== mode);
+      button.remove();
+    }
+  });
 
   const createButton = document.getElementById("create-mode");
   createButton.parentNode.insertBefore(button, createButton);

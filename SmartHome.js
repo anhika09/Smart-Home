@@ -1,7 +1,7 @@
 class SmartHome {
     constructor(rooms) {
         this.rooms = rooms;
-    }
+        this.modes = [];    }
 
     getRooms() {
         return this.rooms;
