@@ -10,7 +10,7 @@ class Device {
     }
     turnOff() {
         this.status = "off";
-        console.log(`${this.name} ${this.type} is now turned off.`)
+        console.log(`${this.name} ${this.type} is now turned off.`);
     }
     updateStatus(newStatus) {
         this.status = newStatus;
